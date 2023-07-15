@@ -177,7 +177,7 @@ def get_random_list(value_list, weight_rnd, num_expected_values):
 #     return my_list
 
 
-def create_list_from_file(name_file, num_expected_values, nan_probability=4):
+def create_list_from_file_curated(name_file, num_expected_values, nan_probability=4):
     """
     Create a list with values from file name_file
     :param name_file:
@@ -191,6 +191,21 @@ def create_list_from_file(name_file, num_expected_values, nan_probability=4):
     value_list.append(NO_VALUE)
 
     return get_random_list(value_list, weight_rnd, num_expected_values)
+
+
+def create_list_from_file(name_file, num_expected_values=0):
+    value_list = _read_file_as_list("data//" + name_file)
+    print(value_list)
+    if num_expected_values == 0:
+        return value_list
+    else:
+        reduced_list = random.sample(value_list, 3000)
+        return reduced_list
+
+
+def duplicate_list_skipping_str(original_list, str_tok):
+    skip_list = [i.split(str_tok)[0] for i in original_list]
+    return skip_list
 
 
 def load_series_from_files(name_files):
