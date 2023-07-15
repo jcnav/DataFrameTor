@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from numpy.random import randn
 from create_list_to_dataset import create_list_phone_number, create_list_from_file
-from create_list_to_dataset import create_twitter_account, create_list_password, create_users
+from create_list_to_dataset import create_twitter_account, create_list_password, create_users, create_list_from_file, \
+    create_list_from_file_curated, duplicate_list_skipping_str
 
 from trash_functions import *
 
@@ -48,19 +49,19 @@ if __name__ == '__main__':
     my_df = replace_df_column(my_df, 'Phone', num_phones)
     # print_dataframe(my_df)
 
-    email_list = create_list_from_file("Email.csv", 3000)
+    email_list = create_list_from_file_curated("Email.csv", 3000)
     my_df = replace_df_column(my_df, 'Email', email_list)
 
-    btc_list = create_list_from_file("BTC_Wallet.csv", 3000, 32)
+    btc_list = create_list_from_file_curated("BTC_Wallet.csv", 3000, 32)
     my_df = replace_df_column(my_df, 'BTC', btc_list)
-    eth_list = create_list_from_file("ETH_Wallet.csv", 3000, 8)
+    eth_list = create_list_from_file_curated("ETH_Wallet.csv", 3000, 8)
     my_df = replace_df_column(my_df, 'ETH', eth_list)
 
-    md5_list = create_list_from_file("MD5.csv", 3000, 32)
+    md5_list = create_list_from_file_curated("MD5.csv", 3000, 32)
     my_df = replace_df_column(my_df, 'MD5', md5_list)
-    sha1_list = create_list_from_file("SHA1.csv", 3000, 32)
+    sha1_list = create_list_from_file_curated("SHA1.csv", 3000, 32)
     my_df = replace_df_column(my_df, 'SHA1', sha1_list)
-    sha256_list = create_list_from_file("SHA256.csv", 3000, 32)
+    sha256_list = create_list_from_file_curated("SHA256.csv", 3000, 32)
     my_df = replace_df_column(my_df, 'SHA256', sha256_list)
 
     pass_list = create_list_password(3000, 4)
@@ -70,6 +71,13 @@ if __name__ == '__main__':
 
     twitter_list = create_twitter_account(3000, 10)
     my_df = replace_df_column(my_df, 'Twitter', twitter_list)
+
+    url_tor_list = create_list_from_file("tor_3000.csv", 3000)
+    my_df = replace_df_column(my_df, 'Tor_URL', url_tor_list)
+
+    own_name_list = duplicate_list_skipping_str(url_tor_list, ".")
+    my_df = replace_df_column(my_df, 'OwnName', own_name_list)
+
 
     # load_series_from_files(name_files)
 
