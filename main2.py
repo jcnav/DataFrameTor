@@ -51,6 +51,7 @@ def create_phone_number(num_expected_values):
         phone_number_list.append(random_phone_number)
     return phone_number_list
 
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # df = pd.DataFrame()
