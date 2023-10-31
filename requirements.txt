@@ -3,3 +3,7 @@ numpy
 openpyxl
 strgen
 StringGenerator
+
+# Studying BTC APIs
+blockcypher
+bs4

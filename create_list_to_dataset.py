@@ -211,7 +211,3 @@ def duplicate_list_skipping_str(original_list, str_tok):
 def load_series_from_files(name_files):
     for name_file in name_files:
         print(get_file_values_in_parentheses(name_file))
-
-
-
-
